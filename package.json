@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "axios": "^0.16.2"
+  },
+  "devDependencies": {
+    "fastify": "^0.28.2"
+  }
+}
