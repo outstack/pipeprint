@@ -6,10 +6,7 @@ process.on('SIGINT', function() {
     process.exit();
 });
 
-const engines = {
-    twig: "http://twig",
-    mjml: "http://mjml",
-};
+const engines = JSON.parse(process.env.PIPEPRINT_ENGINE_CONFIG);
 
 fastify.post('/render/pipeline', async function (request, reply) {
     let body = request.body;
