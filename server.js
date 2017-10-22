@@ -35,11 +35,17 @@ fastify.post('/render/pipeline', async function (request, reply) {
         } catch (e) {
             reply
                 .code(500)
-                .type('application/json')
-                .send({
-                    error: 'pipeline_failed',
-                    description: 'Failed at stage ' + index + ': ' + e.message
-                });
+                .type('application/problem+json')
+                .send(
+                    JSON.stringify(
+                        {
+                            title: 'Pipeline Failed',
+                            detail: 'Failed at stage ' + index + ' [' + stages[index].engine + "]: " + e.message,
+                            errorData: e.response.data
+                        }
+                    )
+                );
+            return;
         }
     }
 
