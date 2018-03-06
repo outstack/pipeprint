@@ -41,7 +41,8 @@ The HTTP server has a single endpoint, `/render/pipeline`. You `POST` to it with
             'invoice.pdf.md.twig': '.. file contents'.
         ],
         'pipeline': [
-            {'engine': 'markdown', 'template': 'invoice.pdf.md.twig' },
+            {'engine': 'twig', 'template': 'invoice.pdf.md.twig' },
+            {'engine': 'markdown' },
             {'engine': 'pdf'},
         ],
         'parameters': {
