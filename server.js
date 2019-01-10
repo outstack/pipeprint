@@ -8,7 +8,7 @@ process.on('SIGINT', function() {
 
 const engines = JSON.parse(process.env.PIPEPRINT_ENGINE_CONFIG);
 
-fastify.post('/render/pipeline', async function (request, reply) {
+fastify.post('/render/pipeline',{ bodyLimit: 10485760 }, async function (request, reply) {
     let body = request.body;
 
     let stages = body.pipeline;
